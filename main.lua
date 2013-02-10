@@ -53,31 +53,135 @@ displayMonsterLevel.y = display.contentHeight * .35
 -- functions
 -----------------------------------------------------------------------------------------
 
-local function PlayerLevelMath(n)
-	-- display.remove(playerLevel)
+local function PlayerLevelPMath()
+	display.remove(displayPlayerLevel)
 	if playerLevel >= 1 then
-		playerLevel = n + playerLevel
+		playerLevel = 1 + playerLevel
 	else
 		playerLevel = 1
 	end
+	--print(playerLevel)
+	displayPlayerLevel = display.newText(playerLevel, 0, 0, "Comic Sans MS", 20)
+	displayPlayerLevel.x = display.contentWidth * .08
+	displayPlayerLevel.y = display.contentHeight * .35
 end
 
-local function PlayerItemMath(n)
+local function PlayerLevelMMath()
+	display.remove(displayPlayerLevel)
+	if playerLevel > 1 then
+		playerLevel = playerLevel - 1
+	else
+		playerLevel = 1
+	end
+	--print(playerLevel)
+	displayPlayerLevel = display.newText(playerLevel, 0, 0, "Comic Sans MS", 20)
+	displayPlayerLevel.x = display.contentWidth * .08
+	displayPlayerLevel.y = display.contentHeight * .35
+end
+
+local function PlayerItemPMath()
+	display.remove(displayPlayerItem)
 	if playerItem >= 0 then
-		playerItem = n + playerItem
+		playerItem = 1 + playerItem
 	else
 		playerItem = 0
 	end
+	--print(playerItem)
+	displayPlayerItem = display.newText(playerItem, 0, 0, "Comic Sans MS", 20)
+	displayPlayerItem.x = display.contentWidth * .32
+	displayPlayerItem.y = display.contentHeight * .35
 end
 
-local function MonsterLevelMath(n)
+local function PlayerItemMMath()
+	display.remove(displayPlayerItem)
+	if playerItem > 0 then
+		playerItem = playerItem - 1
+	else
+		playerItem = 0
+	end
+	--print(playerItem)
+	displayPlayerItem = display.newText(playerItem, 0, 0, "Comic Sans MS", 20)
+	displayPlayerItem.x = display.contentWidth * .32
+	displayPlayerItem.y = display.contentHeight * .35
+end
+
+local function MonsterLevelPONEMath()
+	display.remove(displayMonsterLevel)
 	if monsterLevel >= 0 then
-		monsterLevel = n + monsterLevel
+		monsterLevel = 1 + monsterLevel
 	else
 		monsterLevel = 0
 	end
+	--print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
 end
 
+local function MonsterLevelMONEMath()
+	display.remove(displayMonsterLevel)
+	if monsterLevel > 0 then
+		monsterLevel = monsterLevel - 1
+	else
+		monsterLevel = 0
+	end
+	--print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
+end
+
+local function MonsterLevelPFIVEMath()
+	display.remove(displayMonsterLevel)
+	if monsterLevel >= 0 then
+		monsterLevel = 5 + monsterLevel
+	else
+		monsterLevel = 0
+	end
+	print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
+end
+
+local function MonsterLevelMFIVEMath()
+	display.remove(displayMonsterLevel)
+	if monsterLevel > 4 then
+		monsterLevel = monsterLevel - 5
+	else
+		monsterLevel = 0
+	end
+	print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
+end
+
+local function MonsterLevelPTENMath()
+	display.remove(displayMonsterLevel)
+	if monsterLevel >= 0 then
+		monsterLevel = 10 + monsterLevel
+	else
+		monsterLevel = 0
+	end
+	print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
+end
+
+local function MonsterLevelMTENMath()
+	display.remove(displayMonsterLevel)
+	if monsterLevel > 9 then
+		monsterLevel = monsterLevel - 10
+	else
+		monsterLevel = 0
+	end
+	print(monsterLevel)
+	displayMonsterLevel = display.newText(monsterLevel, 0, 0, "Comic Sans MS", 20)
+	displayMonsterLevel.x = display.contentWidth * .9
+	displayMonsterLevel.y = display.contentHeight * .35
+end
 -----------------------------------------------------------------------------------------
 -- Player Level Buttons
 -----------------------------------------------------------------------------------------
@@ -86,7 +190,9 @@ local uparrowPLevel = widget.newButton {
 	default = "assets/graphics/uparrow.png",
 	width = 25,
 	height = 25,
-	onRelease = PlayerLevelMath(1)
+	onRelease = function()
+		PlayerLevelPMath()
+	end
 }
 uparrowPLevel.x = display.contentWidth * .08
 uparrowPLevel.y = display.contentHeight * .45
@@ -95,7 +201,9 @@ local downarrowPLevel = widget.newButton {
 	default = "assets/graphics/downarrow.png",
 	width = 25,
 	height = 25,
-	onRelease = PlayerLevelMath(-1)
+	onRelease = function()
+		PlayerLevelMMath()
+	end
 }
 downarrowPLevel.x = display.contentWidth * .08
 downarrowPLevel.y = display.contentHeight * .55
@@ -105,7 +213,9 @@ local uparrowPItem = widget.newButton {
 	default = "assets/graphics/uparrow.png",
 	width = 25,
 	height = 25,
-	onRelease = PlayerItemMath(1)
+	onRelease = function()
+		PlayerItemPMath()
+	end
 }
 uparrowPItem.x = display.contentWidth * .32
 uparrowPItem.y = display.contentHeight * .45
@@ -114,7 +224,9 @@ local downarrowPItem = widget.newButton {
 	default = "assets/graphics/downarrow.png",
 	width = 25,
 	height = 25,
-	onRelease = PlayerItemMath(-1)
+	onRelease = function()
+		PlayerItemMMath()
+	end
 }
 downarrowPItem.x = display.contentWidth * .32
 downarrowPItem.y = display.contentHeight * .55
@@ -128,7 +240,9 @@ local uparrowMLevel1 = widget.newButton {
 	default = "assets/graphics/uparrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(1)
+	onRelease = function()
+		MonsterLevelPONEMath()
+	end
 }
 uparrowMLevel1.x = display.contentWidth * .82
 uparrowMLevel1.y = display.contentHeight * .45
@@ -137,7 +251,9 @@ local downarrowMLevel1 = widget.newButton {
 	default = "assets/graphics/downarrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(-1)
+	onRelease = function()
+		MonsterLevelMONEMath()
+	end
 }
 downarrowMLevel1.x = display.contentWidth * .82
 downarrowMLevel1.y = display.contentHeight * .55
@@ -147,7 +263,9 @@ local uparrowMLevel5 = widget.newButton {
 	default = "assets/graphics/uparrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(5)
+	onRelease = function()
+		MonsterLevelPFIVEMath()
+	end
 }
 uparrowMLevel5.x = display.contentWidth * .9
 uparrowMLevel5.y = display.contentHeight * .45
@@ -156,7 +274,9 @@ local downarrowMLevel5 = widget.newButton {
 	default = "assets/graphics/downarrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(-5)
+	onRelease = function()
+		MonsterLevelMFIVEMath()
+	end
 }
 downarrowMLevel5.x = display.contentWidth * .9
 downarrowMLevel5.y = display.contentHeight * .55
@@ -166,7 +286,9 @@ local uparrowMLevel10 = widget.newButton {
 	default = "assets/graphics/uparrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(10)
+	onRelease = function()
+		MonsterLevelPTENMath()
+	end
 }
 uparrowMLevel10.x = display.contentWidth * .98
 uparrowMLevel10.y = display.contentHeight * .45
@@ -175,7 +297,9 @@ local downarrowMLevel10 = widget.newButton {
 	default = "assets/graphics/downarrow.png",
 	width = 25,
 	height = 25,
-	onRelease = MonsterLevelMath(-10)
+	onRelease = function()
+		MonsterLevelMTENMath()
+	end
 }
 downarrowMLevel10.x = display.contentWidth * .98
 downarrowMLevel10.y = display.contentHeight * .55
